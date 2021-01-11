@@ -1,6 +1,6 @@
 module App.App.App_ exposing (..)
 
-import App.App.Types exposing (..)
+import App.App.App exposing (..)
 import Browser exposing (Document, UrlRequest)
 import Browser.Navigation as Navigation
 import Html exposing (text)

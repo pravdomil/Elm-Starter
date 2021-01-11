@@ -1,4 +1,4 @@
-module App.App.Types exposing (..)
+module App.App.App exposing (..)
 
 import Browser exposing (UrlRequest)
 import Url exposing (Url)

@@ -1,7 +1,7 @@
 module Main exposing (main)
 
+import App.App.App exposing (..)
 import App.App.App_ exposing (..)
-import App.App.Types exposing (..)
 import Browser
 import Json.Decode as Decode
 
