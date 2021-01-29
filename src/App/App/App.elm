@@ -1,17 +1,16 @@
 module App.App.App exposing (..)
 
-import Browser exposing (UrlRequest)
-import Url exposing (Url)
+import App.Router.Router exposing (Router, RouterMsg)
 
 
 {-| To define things we keep.
 -}
 type alias Model =
-    {}
+    { router : Router
+    }
 
 
 {-| To define what can happen.
 -}
 type Msg
-    = UrlRequested UrlRequest
-    | UrlChanged Url
+    = RouterMsg RouterMsg

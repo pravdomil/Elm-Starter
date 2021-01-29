@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import App.App.App exposing (..)
 import App.App.App_ exposing (..)
+import App.Router.Router exposing (RouterMsg(..))
 import Browser
 import Json.Decode as Decode
 
@@ -15,6 +16,6 @@ main =
         , update = update
         , subscriptions = subscriptions
         , view = view
-        , onUrlRequest = UrlRequested
-        , onUrlChange = UrlChanged
+        , onUrlRequest = UrlRequested >> RouterMsg
+        , onUrlChange = UrlChanged >> RouterMsg
         }
