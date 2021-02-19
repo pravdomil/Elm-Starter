@@ -6,6 +6,7 @@ import Html exposing (text)
 import Json.Decode as Decode
 import Router exposing (Msg(..))
 import Url exposing (Url)
+import Utils.Translation exposing (Translation(..), t)
 
 
 main : Program Decode.Value Model Msg
@@ -68,8 +69,8 @@ subscriptions _ =
 
 view : Model -> Document Msg
 view _ =
-    { title = "Hello world!"
+    { title = t A_Title
     , body =
-        [ text "Hello world!"
+        [ text (t A_Title)
         ]
     }
