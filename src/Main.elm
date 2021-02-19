@@ -7,8 +7,6 @@ import Browser
 import Json.Decode as Decode
 
 
-{-| To create application.
--}
 main : Program Decode.Value Model Msg
 main =
     Browser.application
