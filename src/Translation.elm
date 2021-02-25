@@ -1,4 +1,4 @@
-module Utils.Translation exposing (..)
+module Translation exposing (..)
 
 
 type Translation

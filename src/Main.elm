@@ -5,8 +5,8 @@ import Browser.Navigation as Navigation
 import Html exposing (text)
 import Json.Decode as Decode
 import Router exposing (Msg(..))
+import Translation exposing (Translation(..), t)
 import Url exposing (Url)
-import Utils.Translation exposing (Translation(..), t)
 
 
 main : Program Decode.Value Model Msg
