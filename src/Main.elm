@@ -4,7 +4,7 @@ import Browser exposing (Document, UrlRequest)
 import Browser.Navigation as Navigation
 import Html exposing (text)
 import Json.Decode as Decode
-import Router exposing (Msg(..))
+import Router
 import Translation exposing (Translation(..), t)
 import Url exposing (Url)
 
@@ -16,8 +16,8 @@ main =
         , update = update
         , subscriptions = subscriptions
         , view = view
-        , onUrlRequest = UrlRequested >> RouterMsg
-        , onUrlChange = UrlChanged >> RouterMsg
+        , onUrlRequest = Router.UrlRequested >> RouterMsg
+        , onUrlChange = Router.UrlChanged >> RouterMsg
         }
 
 
