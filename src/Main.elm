@@ -5,7 +5,7 @@ import Browser.Navigation as Navigation
 import Html exposing (text)
 import Json.Decode as Decode
 import Router
-import Translation exposing (Translation(..), t)
+import Translation as Translation
 import Url exposing (Url)
 
 
@@ -69,8 +69,8 @@ subscriptions _ =
 
 view : Model -> Document Msg
 view _ =
-    { title = t A_Title
+    { title = Translation.title
     , body =
-        [ text (t A_Title)
+        [ text Translation.title
         ]
     }
