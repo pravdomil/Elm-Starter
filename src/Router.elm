@@ -10,8 +10,8 @@ type alias Model =
     }
 
 
-init : Navigation.Key -> Model
-init key =
+init : Url -> Navigation.Key -> Model
+init url key =
     { key = key
     }
 
