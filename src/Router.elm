@@ -1,6 +1,6 @@
 module Router exposing (..)
 
-import Browser exposing (UrlRequest(..))
+import Browser exposing (UrlRequest)
 import Browser.Navigation as Navigation
 import Url exposing (Url)
 
@@ -30,12 +30,12 @@ update msg model =
     case msg of
         UrlRequested a ->
             case a of
-                Internal url ->
+                Browser.Internal url ->
                     ( model
                     , Navigation.pushUrl model.key (Url.toString url)
                     )
 
-                External url ->
+                Browser.External url ->
                     ( model
                     , Navigation.load url
                     )
