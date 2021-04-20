@@ -2,6 +2,7 @@ module Router exposing (..)
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation as Navigation
+import Task
 import Url exposing (Url)
 
 
@@ -10,10 +11,12 @@ type alias Model =
     }
 
 
-init : Url -> Navigation.Key -> Model
+init : Url -> Navigation.Key -> ( Model, Cmd Msg )
 init url key =
-    { key = key
-    }
+    ( { key = key
+      }
+    , Task.succeed () |> Task.perform (\_ -> UrlChanged url)
+    )
 
 
 

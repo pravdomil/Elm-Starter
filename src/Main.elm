@@ -32,9 +32,14 @@ type alias Model =
 
 init : Decode.Value -> Url -> Navigation.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( { router = Router.init url key
+    let
+        ( router, routerCmd ) =
+            Router.init url key
+    in
+    ( { router = router
       }
-    , Cmd.none
+    , routerCmd
+        |> Cmd.map RouterMsg
     )
 
 
