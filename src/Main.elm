@@ -1,8 +1,8 @@
 module Main exposing (..)
 
-import Browser exposing (Document, UrlRequest)
+import Browser
 import Browser.Navigation as Navigation
-import Html exposing (text)
+import Html
 import Json.Decode as Decode
 import Router
 import Translation as Translation
@@ -72,10 +72,10 @@ subscriptions _ =
 --
 
 
-view : Model -> Document Msg
+view : Model -> Browser.Document Msg
 view _ =
     { title = Translation.title
     , body =
-        [ text Translation.title
+        [ Html.text Translation.title
         ]
     }

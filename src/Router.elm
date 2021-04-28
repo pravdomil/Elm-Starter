@@ -1,6 +1,6 @@
 module Router exposing (..)
 
-import Browser exposing (UrlRequest)
+import Browser
 import Browser.Navigation as Navigation
 import Task
 import Url exposing (Url)
@@ -24,7 +24,7 @@ init url key =
 
 
 type Msg
-    = UrlRequested UrlRequest
+    = UrlRequested Browser.UrlRequest
     | UrlChanged Url
 
 
