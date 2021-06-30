@@ -1,4 +1,4 @@
-module Router exposing (..)
+module App.Router exposing (..)
 
 import Browser
 import Browser.Navigation as Navigation

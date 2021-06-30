@@ -1,11 +1,11 @@
-module Main exposing (..)
+module App.Main exposing (..)
 
+import App.Router as Router
+import App.Translation as Translation
 import Browser
 import Browser.Navigation as Navigation
 import Html
 import Json.Decode as Decode
-import Router
-import Translation as Translation
 import Url exposing (Url)
 
 
