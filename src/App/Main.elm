@@ -54,8 +54,8 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        RouterMsg a ->
-            Router.update a model.router
+        RouterMsg b ->
+            Router.update b model.router
                 |> Tuple.mapBoth (\v -> { model | router = v }) (Cmd.map RouterMsg)
 
 
