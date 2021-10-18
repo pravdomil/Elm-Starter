@@ -13,10 +13,13 @@ type alias Model =
 
 init : Url -> Navigation.Key -> ( Model, Cmd Msg )
 init url key =
-    ( { key = key
-      }
-    , Task.succeed () |> Task.perform (\_ -> UrlChanged url)
-    )
+    let
+        model : Model
+        model =
+            { key = key
+            }
+    in
+    update (UrlChanged url) model
 
 
 
