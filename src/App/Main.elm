@@ -1,6 +1,7 @@
 module App.Main exposing (..)
 
 import App.Model
+import App.Msg
 import App.Translation
 import Browser
 import Browser.Navigation
@@ -10,15 +11,15 @@ import Json.Decode
 import Url
 
 
-main : Program Json.Decode.Value App.Model.Model App.Model.Msg
+main : Program Json.Decode.Value App.Model.Model App.Msg.Msg
 main =
     Browser.application
         { init = init
         , update = update
         , subscriptions = subscriptions
         , view = view
-        , onUrlRequest = App.Model.UrlRequested
-        , onUrlChange = App.Model.UrlChanged
+        , onUrlRequest = App.Msg.UrlRequested
+        , onUrlChange = App.Msg.UrlChanged
         }
 
 
@@ -26,11 +27,11 @@ main =
 --
 
 
-init : Json.Decode.Value -> Url.Url -> Browser.Navigation.Key -> ( App.Model.Model, Cmd App.Model.Msg )
+init : Json.Decode.Value -> Url.Url -> Browser.Navigation.Key -> ( App.Model.Model, Cmd App.Msg.Msg )
 init _ url key =
     let
         ( router, routerCmd ) =
-            Browser.QueryRouter.init App.Model.pageFromUrl url key App.Model.UrlChanged
+            Browser.QueryRouter.init App.Model.pageFromUrl url key App.Msg.UrlChanged
     in
     ( { router = router
       }
@@ -42,15 +43,15 @@ init _ url key =
 --
 
 
-update : App.Model.Msg -> App.Model.Model -> ( App.Model.Model, Cmd App.Model.Msg )
+update : App.Msg.Msg -> App.Model.Model -> ( App.Model.Model, Cmd App.Msg.Msg )
 update msg model =
     case msg of
-        App.Model.UrlRequested a ->
+        App.Msg.UrlRequested a ->
             ( model
             , Browser.QueryRouter.urlRequested a model.router
             )
 
-        App.Model.UrlChanged a ->
+        App.Msg.UrlChanged a ->
             ( { model | router = Browser.QueryRouter.urlChanged App.Model.pageFromUrl a model.router }
             , Cmd.none
             )
@@ -60,7 +61,7 @@ update msg model =
 --
 
 
-subscriptions : App.Model.Model -> Sub App.Model.Msg
+subscriptions : App.Model.Model -> Sub App.Msg.Msg
 subscriptions _ =
     Sub.none
 
@@ -69,7 +70,7 @@ subscriptions _ =
 --
 
 
-view : App.Model.Model -> Browser.Document App.Model.Msg
+view : App.Model.Model -> Browser.Document App.Msg.Msg
 view _ =
     { title = App.Translation.title
     , body =

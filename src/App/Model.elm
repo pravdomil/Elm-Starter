@@ -30,12 +30,3 @@ pageFromUrl a =
 pageToUrl : Page -> String
 pageToUrl a =
     "?" ++ Url.QueryString.toString a.query
-
-
-
---
-
-
-type Msg
-    = UrlRequested Browser.UrlRequest
-    | UrlChanged Url.Url
