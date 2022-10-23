@@ -1,6 +1,5 @@
 module App.Model exposing (..)
 
-import Browser
 import Browser.QueryRouter
 import Dict
 import Url
