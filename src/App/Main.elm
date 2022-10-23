@@ -30,13 +30,9 @@ main =
 
 init : Json.Decode.Value -> Url.Url -> Browser.Navigation.Key -> ( App.Model.Model, Cmd App.Msg.Msg )
 init _ url key =
-    let
-        ( router, routerCmd ) =
-            Browser.QueryRouter.init App.Model.pageFromUrl url key App.Msg.UrlChanged
-    in
-    ( { router = router
+    ( { router = Browser.QueryRouter.init App.Model.pageFromUrl url key
       }
-    , routerCmd
+    , Cmd.none
     )
 
 
@@ -51,14 +47,10 @@ update msg model =
             Platform.Extra.noOperation model
 
         App.Msg.UrlRequested a ->
-            ( model
-            , Browser.QueryRouter.urlRequested a model.router
-            )
+            Browser.QueryRouter.urlRequested a model
 
         App.Msg.UrlChanged a ->
-            ( { model | router = Browser.QueryRouter.urlChanged App.Model.pageFromUrl a model.router }
-            , Cmd.none
-            )
+            Browser.QueryRouter.urlChanged App.Model.pageFromUrl a model
 
 
 
