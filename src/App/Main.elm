@@ -8,6 +8,7 @@ import Browser.Navigation
 import Browser.QueryRouter
 import Html
 import Json.Decode
+import Platform.Extra
 import Url
 
 
@@ -46,6 +47,9 @@ init _ url key =
 update : App.Msg.Msg -> App.Model.Model -> ( App.Model.Model, Cmd App.Msg.Msg )
 update msg model =
     case msg of
+        App.Msg.NothingHappened ->
+            Platform.Extra.noOperation model
+
         App.Msg.UrlRequested a ->
             ( model
             , Browser.QueryRouter.urlRequested a model.router

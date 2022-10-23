@@ -5,5 +5,6 @@ import Url
 
 
 type Msg
-    = UrlRequested Browser.UrlRequest
+    = NothingHappened
+    | UrlRequested Browser.UrlRequest
     | UrlChanged Url.Url
