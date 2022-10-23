@@ -2,7 +2,7 @@ module App.Main exposing (..)
 
 import App.Model
 import App.Msg
-import App.Translation
+import App.Utils.Translation
 import Browser
 import Browser.Navigation
 import Browser.QueryRouter
@@ -72,8 +72,8 @@ subscriptions _ =
 
 view : App.Model.Model -> Browser.Document App.Msg.Msg
 view _ =
-    { title = App.Translation.title
+    { title = App.Utils.Translation.title
     , body =
-        [ Html.text App.Translation.title
+        [ Html.text App.Utils.Translation.title
         ]
     }

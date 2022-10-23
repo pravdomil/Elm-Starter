@@ -1,4 +1,4 @@
-module App.Translation exposing (..)
+module App.Utils.Translation exposing (..)
 
 
 title : String
