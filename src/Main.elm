@@ -1,7 +1,7 @@
 module Main exposing (..)
 
-import App
+import App.Main
 
 
 main =
-    App.main
+    App.Main.main

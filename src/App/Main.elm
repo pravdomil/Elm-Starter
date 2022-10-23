@@ -1,4 +1,4 @@
-module App exposing (..)
+module App.Main exposing (..)
 
 import App.Model
 import App.Translation
