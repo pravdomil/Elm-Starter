@@ -2,17 +2,16 @@ module App.Model.Update exposing (..)
 
 import App.Model
 import App.Msg
+import Browser
 import Browser.Navigation
-import Browser.QueryRouter
 import Json.Decode
 import Platform.Extra
 import Url
 
 
 init : Json.Decode.Value -> Url.Url -> Browser.Navigation.Key -> ( App.Model.Model, Cmd App.Msg.Msg )
-init _ url key =
-    ( { router = Browser.QueryRouter.init App.Model.pageFromUrl url key
-      }
+init _ _ _ =
+    ( App.Model.Model
     , Cmd.none
     )
 
@@ -22,16 +21,22 @@ init _ url key =
 
 
 update : App.Msg.Msg -> App.Model.Model -> ( App.Model.Model, Cmd App.Msg.Msg )
-update msg model =
+update msg =
     case msg of
         App.Msg.NothingHappened ->
-            Platform.Extra.noOperation model
+            Platform.Extra.noOperation
 
         App.Msg.UrlRequested a ->
-            Browser.QueryRouter.urlRequested a model
+            \model ->
+                case a of
+                    Browser.Internal b ->
+                        ( model, Browser.Navigation.load (Url.toString b) )
 
-        App.Msg.UrlChanged a ->
-            Browser.QueryRouter.urlChanged App.Model.pageFromUrl a model
+                    Browser.External b ->
+                        ( model, Browser.Navigation.load b )
+
+        App.Msg.UrlChanged _ ->
+            Platform.Extra.noOperation
 
 
 
