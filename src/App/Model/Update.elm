@@ -2,16 +2,17 @@ module App.Model.Update exposing (..)
 
 import App.Model
 import App.Msg
-import Browser
 import Browser.Navigation
+import Browser.Router
 import Json.Decode
 import Platform.Extra
 import Url
 
 
 init : Json.Decode.Value -> Url.Url -> Browser.Navigation.Key -> ( App.Model.Model, Cmd App.Msg.Msg )
-init _ _ _ =
+init _ url key =
     ( App.Model.Model
+        (Browser.Router.init Browser.Router.fileBaseUrl identity url key)
     , Cmd.none
     )
 
@@ -27,16 +28,10 @@ update msg =
             Platform.Extra.noOperation
 
         App.Msg.UrlRequested a ->
-            \model ->
-                case a of
-                    Browser.Internal b ->
-                        ( model, Browser.Navigation.load (Url.toString b) )
+            Browser.Router.urlRequested Browser.Router.fileBaseUrl a
 
-                    Browser.External b ->
-                        ( model, Browser.Navigation.load b )
-
-        App.Msg.UrlChanged _ ->
-            Platform.Extra.noOperation
+        App.Msg.UrlChanged a ->
+            Browser.Router.urlChanged identity a
 
 
 
