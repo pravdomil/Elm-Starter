@@ -8,8 +8,7 @@ import Html
 
 view : App.Model.Model -> Browser.Document App.Msg.Msg
 view _ =
-    { title = "Hello World!"
-    , body =
+    Browser.Document
+        "Hello World!"
         [ Html.text "Hello World!"
         ]
-    }
